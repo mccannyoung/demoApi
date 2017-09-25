@@ -14,12 +14,16 @@ To run it locally, navigate into the folder of the demoApi project run the follo
 dotnet run
 ```
 
-To run it from docker (recommended) run docker and run the command:
+To run it from docker (recommended) run docker compose file found in the same directory as the readme:
 
 ```
-docker run ramymn/demoApi
+docker-compose –f commpose.yml pull
+docker-compose –f commpose.yml up –d
 ```
-
+To break it down run 
+```
+docker-compose –f commpose.yml down
+```
 To use the api, run GET or PUT commands, for example 
 
 ```

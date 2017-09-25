@@ -7,15 +7,17 @@ services:
         - "6379:6379"
         networks:
         - api
-     redis:
+     demoapi:
         image: ramymn/demoapi
         ports:
         - "5000:5000"
         networks:
-        -api
+        - api
         environment:
-        - redis_ip: redis
-        - redis_port: 6379
+        - redis_ip=redis
+        - redis_port=6379
+        depends_on:
+        - redis
 networks:
     api:
         driver: bridge
