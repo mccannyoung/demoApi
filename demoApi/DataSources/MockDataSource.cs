@@ -6,18 +6,22 @@ namespace demoApi.DataSources
     {
         public Product GetNonPriceDataById(int productId)
         {
-            var product = new Product();
-            product.id = 7;
-            product.name = "Mock";
+            var product = new Product
+            {
+                id = 7,
+                name = "Mock"
+            };
 
             return product;
         }
 
         public Current_Price GetPriceData(int productId)
         {
-            var currentPrice = new Current_Price();
-            currentPrice.currency_code = "USD";
-            currentPrice.value = 14.92;
+            var currentPrice = new Current_Price
+            {
+                currency_code = "USD",
+                value = 14.92
+            };
             return currentPrice;
         }
 

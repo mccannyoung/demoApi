@@ -16,9 +16,11 @@ namespace demoApi
             // this code should be taken out for production
             // but since this is a coding challenge, this seemed
             // to be the easiest way to get the data in the DB
-            var dataForDB = new Current_Price();
-            dataForDB.currency_code = "USD";
-            dataForDB.value = 18.12;
+            var dataForDB = new Current_Price
+            {
+                currency_code = "USD",
+                value = 18.12
+            };
             var writeThis = JsonConvert.SerializeObject(dataForDB);
             var manager = new RedisManagerPool(Environment.GetEnvironmentVariable("redis_ip") + ":" + Environment.GetEnvironmentVariable("redis_port"));
             using (var client = manager.GetClient())

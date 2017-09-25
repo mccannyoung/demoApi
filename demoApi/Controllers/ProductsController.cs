@@ -3,6 +3,7 @@ using demoApi.Models;
 using demoApi.Repositories;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Net;
 
 namespace demoApi.Controllers
 {
@@ -28,15 +29,25 @@ namespace demoApi.Controllers
                     if (product.id == id)
                         return product;
                 }
+                throw new Exception("Could not connect to data source");
+            }
+            catch (NullReferenceException)
+            {
+                HttpContext.Response.StatusCode = 404;
                 return new Product();
             }
-            catch(Exception ex)
+            catch (WebException we)
+            {
+                HttpWebResponse res = (HttpWebResponse)we.Response;
+                HttpContext.Response.StatusCode = (int)res.StatusCode;
+                return new Product();
+            }
+            catch (Exception ex)
             {
                 _logger.LogCritical("Error fetching product information for " + id + " error thrown: " + ex.Message);
-                return new Product();
+                throw ex;
             }
 
-            
         }
 
         // PUT api/values
@@ -46,9 +57,20 @@ namespace demoApi.Controllers
             try
             {
                 _repository.UpdateProductPrice(updatedProduct);
-            }catch(Exception ex)
+            }
+            catch (NullReferenceException)
+            {
+                HttpContext.Response.StatusCode = 404;
+            }
+            catch (WebException we)
+            {
+                HttpWebResponse res = (HttpWebResponse)we.Response;
+                HttpContext.Response.StatusCode = (int)res.StatusCode;
+            }
+            catch (Exception ex)
             {
                 _logger.LogCritical("Error updating product price for " + id + " to " + updatedProduct.current_price.value + " error thrown: " + ex.Message);
+                throw ex;
             }
             
         }

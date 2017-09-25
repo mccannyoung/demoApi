@@ -26,10 +26,9 @@ namespace demoApi.DataSources
 
                     returnedProduct = JsonConvert.DeserializeObject<RedSkyDataReturnModels.RootObject>(responseText);
                 }
-                if (returnedProduct != null) { 
-                    product.id = productId;
-                    product.name = returnedProduct.product.item.product_description.general_description;
-                }
+
+                product.id = productId;
+                product.name = returnedProduct.product.item.product_description.general_description;
             }
             catch (Exception ex)
             {
