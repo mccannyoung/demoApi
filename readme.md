@@ -1,12 +1,12 @@
 # demoApi
 
-demoApi is a standard .NET Core webapi application.
+demoApi is a standard .NET Core webapi application. I set it up to read the IP address and port of the redis instance from environmental variables, redis_ip and redis_port. For development, I just used a docker image of redis, the latest. (port 127.0.0.1 and port 6379). 
 
-To buid the project, navigate into the folder of demoApi project run the following command
+To build the project, navigate into the folder of demoApi project run the following command
 
 ```
 dotnet build
-``` 
+```
 
 To run it locally, navigate into the folder of the demoApi project run the following command:
 
@@ -14,16 +14,6 @@ To run it locally, navigate into the folder of the demoApi project run the follo
 dotnet run
 ```
 
-To run it from docker (recommended) run docker compose file found in the same directory as the readme:
-
-```
-docker-compose –f commpose.yml pull
-docker-compose –f commpose.yml up –d
-```
-To break it down run 
-```
-docker-compose –f commpose.yml down
-```
 To use the api, run GET or PUT commands, for example 
 
 ```
@@ -34,4 +24,9 @@ and
 
 ```
 PUT http://localhost:5000/api/products/<insertProductNumber>
+```
+I've taken the liberty of adding swagger to the project, to provide a basic and clean front end for testing. it can be found at 
+
+```
+http://localhost:5000/swagger
 ```
