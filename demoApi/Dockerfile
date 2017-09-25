@@ -12,7 +12,7 @@ RUN ["dotnet", "restore"]
 
 EXPOSE 5000
 
-ENV redis_ip=redis
+ENV redis_ip=127.0.0.1
 ENV redis_port=6379
 
 ENTRYPOINT ["dotnet", "run"]
