@@ -30,3 +30,12 @@ I've taken the liberty of adding swagger to the project, to provide a basic and 
 ```
 http://localhost:5000/swagger
 ```
+
+A container with this application is also available on [docker](https://hub.docker.com/r/ramymn/demoapi/)
+
+A working docker-compose file is included in this directory and can be used for quick and easy deployment to any computer running docker. Just run the following commands
+
+```
+docker-compose -f compose.yml pull
+docker-compose -f compose.yml up -d
+```
